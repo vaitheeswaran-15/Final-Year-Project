@@ -1,0 +1,14 @@
+<%if user_signed_in? %>
+  <h1>Welcome to SaaS project Management App.</h1>
+  <% if @teams.count == 0 %>
+    <%=link_to "Create a team",new_team_path%>
+  <% else %>
+    <% @teams.each do |team| %>
+      <%=link_to team.name ,team_path(team) %><br>
+    <% end %>
+    <%=link_to "Create a team",new_team_path%>
+  <% end %>
+  <%= link_to "Sign Out", destroy_user_session_path , method: :delete %>
+<% else %>
+  <%= link_to "Sign Up", user_session_path %>
+<% end %>
