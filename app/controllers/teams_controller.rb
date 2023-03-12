@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1 or /teams/1.json
   def show
+    @associate_user = @team.users.present?
   end
 
   # GET /teams/new
@@ -47,6 +48,19 @@ class TeamsController < ApplicationController
     end
   end
 
+  # DELETE /teams/1 or /teams/1.json
+  def destroy
+    @team.destroy
+
+    respond_to do |format|
+      format.html { redirect_to teams_url, notice: "Team was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+
+  # ===== Custom Actions =====
+
   def user
     @user = User.find(current_user.id)
     @team = Team.find(params[:id])
@@ -59,13 +73,15 @@ class TeamsController < ApplicationController
     @team_members = @team.users
   end
 
-  # DELETE /teams/1 or /teams/1.json
-  def destroy
-    @team.destroy
+  def team_exit
+    @team = Team.find(params[:id])
 
     respond_to do |format|
-      format.html { redirect_to teams_url, notice: "Team was successfully destroyed." }
-      format.json { head :no_content }
+      if @team.users.delete(current_user.id)
+        format.html { redirect_to(root_path, notice: "#{current_user.email} removed from #{@team.name} successfully") }
+      else
+        format.html { render(@team, alert: "Something went wrong") }
+      end
     end
   end
 
