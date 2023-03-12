@@ -1,5 +1,5 @@
 <%if user_signed_in? %>
-  <h1>Welcome to SaaS project Management App.</h1>
+  <h1>Welcome to SaaS project Management App | <span>Signed as <%= User.find(current_user.id).email %></span> </h1>
   <% if @teams.count == 0 %>
     <%=link_to "Create a team",new_team_path%>
   <% else %>

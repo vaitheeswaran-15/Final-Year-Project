@@ -49,8 +49,14 @@ class TeamsController < ApplicationController
 
   def user
     @user = User.find(current_user.id)
-    # @team = Team.find(params[:id])
-    Team.users << @user
+    @team = Team.find(params[:id])
+    @team.users << @user
+    @message = "Success"
+  end
+
+  def view_team
+    @team = Team.find(params[:id])
+    @team_members = @team.users
   end
 
   # DELETE /teams/1 or /teams/1.json
