@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1 or /teams/1.json
   def show
-    @associate_user = @team.users.present?
+    @associate_user = @team.users.find(current_user.id)
   end
 
   # GET /teams/new
