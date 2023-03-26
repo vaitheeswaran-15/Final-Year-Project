@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
 
   # GET /teams/1 or /teams/1.json
   def show
-    @associate_user = @team.users.present?
+    @associate_user = @team.users.exists?(current_user.id)
   end
 
   # GET /teams/new
@@ -65,7 +65,8 @@ class TeamsController < ApplicationController
     @user = User.find(current_user.id)
     @team = Team.find(params[:id])
     @team.users << @user
-    @message = "Success"
+    flash[:notice] = "Successfully Joined!!"
+    redirect_to root_path
   end
 
   def view_team
