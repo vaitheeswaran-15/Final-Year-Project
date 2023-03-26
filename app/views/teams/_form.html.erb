@@ -1,3 +1,4 @@
+
 <%= form_with(model: team) do |form| %>
   <% if team.errors.any? %>
     <div id="error_explanation">
@@ -12,16 +13,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <label class="label">Team Name</label>
+    <%= form.text_field :name, type: "input", class: "input" %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <label class="label">Description</label>
+    <%= form.rich_text_area :description, class: "textarea" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions columns">
+    <div class="column">
+      <%= form.submit :submit, class: "button is-link" %>
+    </div>
+    <div class="column">
+      <%= link_to 'Back', teams_path, class: "button is-light redirect-link" %>
+    </div>
   </div>
 <% end %>
