@@ -9,13 +9,12 @@
   <strong>Description:</strong>
   <%= @team.description %>
 </p>
-
 <% if @associate_user %>
   <%= link_to 'View Members', view_team_path(@team) %> |
 <% else %>
   <%= link_to 'Join the team', join_path(@team) %> |
 <% end %>
 <%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<%= link_to 'Back', teams_path %> |
 
-<%= link_to('Remove', exit_team_path, method: :delete) %>
+<%= link_to('Remove', exit_team_path, method: :delete) if @team.users.exists?(current_user.id)%>
