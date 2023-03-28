@@ -65,7 +65,8 @@ class TeamsController < ApplicationController
     @user = User.find(current_user.id)
     @team = Team.find(params[:id])
     @team.users << @user
-    flash[:notice] = "Successfully Joined!!"
+    flash[:notice] = "Successfully Joined!! Please check you mail"
+    TeamsMailer.with(user: @user.email,teams: @team.name).welcome_email.deliver_now
     redirect_to root_path
   end
 
