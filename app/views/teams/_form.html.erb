@@ -1,33 +1,43 @@
+<script>
+    $(document).ready(function(){
+        if $('.notification').length > 1 {
+            console.log("Working")
+        }
+    })
+</script>
 
 <%= form_with(model: team) do |form| %>
-  <% if team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+  <div class="form">
 
-      <ul>
-        <% team.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <% if team.errors.any? %>
+      <div class="notification is-danger" style="text-align: center;">
+  <!--      <h5><%#= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h5>-->
+        <ul>
+          <% team.errors.each do |error| %>
+            <%= error.full_message %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <label class="label">Team Name</label>
+      <%= form.text_field :name, type: "input", class: "input" %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <label class="label">Team Name</label>
-    <%= form.text_field :name, type: "input", class: "input" %>
+    <div class="field">
+      <label class="label">Description</label>
+      <%= form.rich_text_area :description, class: "textarea", required: true %>
+    </div>
+
+    <div class="actions columns">
+      <div class="column">
+        <%= form.submit :submit, class: "button is-link" %>
+      </div>
+      <div class="column">
+        <%= link_to 'Back', root_path, class: "button is-light redirect-link" %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <label class="label">Description</label>
-    <%= form.rich_text_area :description, class: "textarea" %>
-  </div>
-
-  <div class="actions columns">
-    <div class="column">
-      <%= form.submit :submit, class: "button is-link" %>
-    </div>
-    <div class="column">
-      <%= link_to 'Back', teams_path, class: "button is-light redirect-link" %>
-    </div>
-  </div>
 <% end %>
