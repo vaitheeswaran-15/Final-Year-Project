@@ -1,33 +1,65 @@
+<script>
+    $(document).ready(function(){
+        const parent = document.querySelector("#form")
+        const notification = document.querySelector(".notify")
+        if(parent.contains(notification)){
+            if(notification.contains(document.querySelector(".team-name")) && notification.contains(document.querySelector(".team-description"))){
+                $('.name-message').append("<p class='notification is-danger'>Name can't be blank</p>")
+                $('.description-message').append("<p class='notification is-danger'>Description can't be blank</p>")
+            }
+            else if(notification.contains(document.querySelector(".team-description"))){
+                console.log("Description can't be blank")
+                $('.description-message').append("<p class='notification is-danger'>Description can't be blank</p>")
+            }
+            else{
+                console.log("Name and Description are blank")
+                $('.name-message').append("<p class='notification is-danger'>Name can't be blank</p>")
+                $('.description-message').append("<p class='notification is-danger'>Description can't be blank</p>")
+            }
+        }
+    })
+</script>
 
-<%= form_with(model: team) do |form| %>
-  <% if team.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+<div id="form">
+  <%= form_with(model: team) do |form| %>
 
-      <ul>
-        <% team.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <% if team.errors.any? %>
+      <div class="notify" style="text-align: center;">
+  <!--      <h5><%#= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h5>-->
+        <ul>
+          <% team.errors.each do |error| %>
+            <% if error.full_message == "Name can't be blank" %>
+              <div class="team-name"></div>
+            <% elsif error.full_message == "Name can't be blank Description can't be blank" %>
+              <div class="full-message"></div>
+            <% else %>
+              <div class="team-description"></div>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="fields">
+      <label class="label">Team Name</label>
+      <span class="name-message"></span>
+      <%= form.text_field :name, type: "input", class: "input" %>
+    </div>
+
+    <div class="fields">
+      <label class="label">Description</label>
+      <span class="description-message"></span>
+      <%= form.rich_text_area :description, class: "textarea", required: true %>
+    </div>
+
+    <div class="actions columns">
+      <div class="column">
+        <%= form.submit :submit, class: "button is-link" %>
+      </div>
+      <div class="column">
+        <%= link_to 'Back', root_path, class: "button is-light redirect-link" %>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <label class="label">Team Name</label>
-    <%= form.text_field :name, type: "input", class: "input" %>
-  </div>
-
-  <div class="field">
-    <label class="label">Description</label>
-    <%= form.rich_text_area :description, class: "textarea" %>
-  </div>
-
-  <div class="actions columns">
-    <div class="column">
-      <%= form.submit :submit, class: "button is-link" %>
-    </div>
-    <div class="column">
-      <%= link_to 'Back', teams_path, class: "button is-light redirect-link" %>
-    </div>
-  </div>
-<% end %>
+</div>

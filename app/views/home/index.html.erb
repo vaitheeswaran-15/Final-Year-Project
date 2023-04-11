@@ -1,10 +1,12 @@
 <%if user_signed_in? %>
-  <div class="container" style="margin-top: 10px;">
-
+  <div class="container is-fluid" style="margin-top: 3rem;">
+    <div class="columns is-multiline" style="justify-content: center; align-items: center;">
+      <%= button_to("Create Team", new_team_path, class: "button", method: :get, style: "width: 15rem; background-color: #8080ff") %>
+    </div>
     <% if @teams.count == 0 %>
       <%=link_to "Create a team",new_team_path, class: "card-footer-item" %>
     <% else %>
-        <div class="columns is-multiline">
+      <div class="columns is-multiline" style="justify-content: center; align-items: center;">
           <% @teams.each do |team| %>
             <div class="column is-one-quarter" style="width: 25rem">
               <div class="card">
@@ -22,13 +24,12 @@
                 <footer class="card-footer">
                   <%= link_to("Show", team_path(team), class: "card-footer-item redirect-link") %>
                   <%= link_to("Edit", edit_team_path(team), class: "card-footer-item redirect-link") %>
-                  <%=link_to "Create team",new_team_path, class: "card-footer-item redirect-link" %>
                 </footer>
               </div>
             </div>
           <% end %>
         </div>
 
-      </div>
     <% end %>
+  </div>
 <% end %>
