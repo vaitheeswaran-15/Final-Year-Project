@@ -1,0 +1,33 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+    </a>
+  </div>
+
+  <div class="navbar-menu">
+    <%= link_to "Home",root_path,class:" partials-item", style: "font-size:18px", class: "navbar-item" %>
+    <%= link_to "Teams",teams_path,class:" partials-item", style: "font-size:18px", class: "navbar-item" %>
+    <%= link_to "Projects",projects_path,class:" partials-item", style: "font-size:18px", class: "navbar-item" %>
+    <div class="navbar-end">
+      <a class="navbar-item">
+        WHY?
+      </a>
+
+      <a class="navbar-item">
+        BUY
+      </a>
+
+      <div class="navbar-item">
+        <% if user_signed_in? %>
+          <h3><span>Welcome <%= link_to(current_user.email, edit_user_registration_path, class: "redirect-link") %></span></h3>&nbsp; |&nbsp;
+          <%= link_to("Log out", destroy_user_session_path, class: "button is-light is-small", method: :delete ) %>
+        <% else %>
+          <%= button_to("Sign up", user_registration_path, class: "button is-primary") %>
+          <%= button_to("Log in", user_session_path, class: "button is-light") %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</nav>

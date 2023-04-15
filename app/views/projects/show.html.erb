@@ -1,15 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+<div class="container" style="width: 50rem;">
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <div class="card is-horizontal shadow-md is-cursor-pointer transform is-duration-300 hover-shadow-xl hover-translate-y">
+<!--            <div class="card-image">-->
+<!--              <figure class="image">-->
+<!--                <img src="https://source.unsplash.com/user/himiwaybikes"-->
+<!--                     alt="Placeholder image">-->
+<!--              </figure>-->
+<!--            </div>-->
+            <div class="card-content p-0 is-flex is-flex-direction-column">
+              <div class="content p-5 has-text-grey-light">
+                <h3><%= @project.title %></h3>
+                <p class="is-size-6 has-text-weight-normal"> <%= @project.description %> </p>
+              </div>
+              <div class="content p-5 has-background-info-light">
+                <div class="columns">
+                  <div class="column">
+                    <div class="is-size-6">
+                      <span class="has-text-weight-semibold">196 km</span> from Istanbul
+                    </div>
+                    <div class="is-size-6">
+                      <span class="has-text-primary-dark">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 10 Reviews
+                    </div>
+                  </div>
+                  <div class="column">
+                    <%= link_to 'Show Tasks', project_tasks_path(@project), class: "button is-primary is-medium is-fullwidth has-text-weight-semibold" %>
+                  </div>
+                </div>
+                <p class="is-size-7">*Places to visit: Istanbul, Kireçburnu & Ankara</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Show Tasks', project_tasks_path(@project) %> |
+ |
 <%= link_to 'Back', projects_path %>

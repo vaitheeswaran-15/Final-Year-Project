@@ -7,6 +7,14 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "css/pages/page-account-settings.css" %>
+    <%= stylesheet_link_tag "css/pages/page-auth.css" %>
+    <%= stylesheet_link_tag "css/pages/page-icons.css" %>
+    <%= stylesheet_link_tag "css/pages/page-misc.css" %>
+    <%= stylesheet_link_tag "css/core.css" %>
+    <%= stylesheet_link_tag "css/demo.css" %>
+    <%= stylesheet_link_tag "css/theme-default.css" %>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -14,75 +22,70 @@
 
     <!--    Bootstrap-->
 
-    <style>
-      .redirect-link:hover{
-          background-color: white;
-      }
-    </style>
-
 <!--    jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+
+<!--    tables-->
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+
+    <script src="../assets/vendor/js/helpers.js"></script>
+    <script src="../assets/js/config.js"></script>
+<!--    tables end-->
+
+    <!-- Bulma Responsive Tables -->
+
+<!--    Bulma CSS Template-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width,initial-scale=1.0">-->
+
+<!--    <meta name="description" content="Admin One - free Vue.js 3 Tailwind dashboard">-->
+
+<!--    <meta property="og:url" content="https://justboil.github.io/admin-one-vue-tailwind/">-->
+<!--    <meta property="og:site_name" content="JustBoil.me">-->
+<!--    <meta property="og:title" content="Admin One Vue.js 3 Tailwind free">-->
+<!--    <meta property="og:description" content="Admin One - free Vue.js 3 Tailwind dashboard with dark mode. Vite or Nuxt or Laravel">-->
+<!--    <meta property="og:image" content="https://static.justboil.me/templates/one/repo-tailwind-vue.png">-->
+<!--    <meta property="og:image:type" content="image/png">-->
+<!--    <meta property="og:image:width" content="1920">-->
+<!--    <meta property="og:image:height" content="960">-->
+
+<!--    <meta property="twitter:card" content="summary_large_image">-->
+<!--    <meta property="twitter:title" content="Admin One Vue.js 3 Tailwind free">-->
+<!--    <meta property="twitter:description" content="Admin One - free Vue.js 3 Tailwind dashboard with dark mode. Vite or Nuxt or Laravel">-->
+<!--    <meta property="twitter:image:src" content="https://static.justboil.me/templates/one/repo-tailwind-vue.png">-->
+<!--    <meta property="twitter:image:width" content="1920">-->
+<!--    <meta property="twitter:image:height" content="960">-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<!--    style-->
+
+    <style>
+        .redirect-link:hover{
+            background-color: white;
+        }
+    </style>
+
+<!--    style end-->
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-130795909-1');
+    </script>
+
+<!--    End of Bulma CSS Template-->
 
   </head>
 
   <body>
 
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <%= link_to root_path, class: "navbar-item", style: "width: 50px" do %>
-        <i class="fa-solid fa-diagram-project fa-2xl" style="color: #8c6ce5;"></i>
-      <% end %>
-
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-
-        <%= link_to "Home",root_path,class:" navbar-item" %>
-        <%= link_to "Projects",projects_path,class:" navbar-item" %>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
-            </a>
-            <a class="navbar-item">
-              Jobs
-            </a>
-            <a class="navbar-item">
-              Contact
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Report an issue
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <h1 class="buttons">
-            <% if user_signed_in? %>
-              <h3><span>Welcome <%= link_to(current_user.email, edit_user_registration_path, class: "redirect-link") %></span></h3>&nbsp; |&nbsp;
-              <%= link_to("Log out", destroy_user_session_path, class: "button is-light is-small", method: :delete ) %>
-            <% else %>
-              <%= button_to("Sign up", user_registration_path, class: "button is-primary") %>
-              <%= button_to("Log in", user_session_path, class: "button is-light") %>
-          <% end %>
-          </h1>
-        </div>
-      </div>
-    </div>
-  </nav>
-
+  <%= render('layouts/partials/home_nav') %>
     <% if notice %>
       <p class="notice notification is-primary"><%= notice %></p>
     <% end %>
@@ -90,5 +93,22 @@
       <p class="alert notification is-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
+
+  <%#= render('layouts/partials/tables') %>
+
+
+<!--  scripts-->
+
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="../assets/vendor/js/menu.js"></script>
+
+
+
+    <!--  scripts-->
   </body>
+
 </html>

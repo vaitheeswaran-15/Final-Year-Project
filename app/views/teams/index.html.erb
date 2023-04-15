@@ -1,29 +1,74 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Teams</h1>
+<div class="container is-fluid" style="margin-top: 3rem;">
+  <div class="columns is-multiline" style="justify-content: center; align-items: center;">
+    <%= button_to("Create Team", new_team_path, class: "button", method: :get, style: "width: 15rem; background-color: #8080ff") %>
+  </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="columns is-multiline">
 
-  <tbody>
     <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= team.description %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="column is-one-quarter">
+        <div class="card p-3" style="height: 30rem;">
+          <div class="card-image mb-4 is-relative">
+            <img class="image is-fullwidth is-rounded is-cover" style="height: 155px;" src="https://images.unsplash.com/photo-1506792006437-256b665541e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=334&amp;q=80" alt="alt" data-config-id="image1">
+            <span class="tag is-primary mt-2 mr-2 px-2" style="position: absolute; top: 0; right: 0; font-size: 12px;" data-config-id="label1">14 Tasks</span>
+          </div>
+          <div class="card-content">
+            <div class="content is-flex is-justify-content-space-between is-align-items-center">
+              <div>
+                <h3 class="title is-size-6 mb-1" data-config-id="title1"> <%= team.name %> </h3>
+                <span class="subtitle" style="font-size: 12px;" data-config-id="desc1"> project name </span>
+              </div>
+              <button class="button is-primary is-light p-0" style="width: 32px; height: 32px;">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-config-id="auto-svg-1-3">
+                  <path d="M7.99984 9.33335C8.73622 9.33335 9.33317 8.7364 9.33317 8.00002C9.33317 7.26364 8.73622 6.66669 7.99984 6.66669C7.26346 6.66669 6.6665 7.26364 6.6665 8.00002C6.6665 8.7364 7.26346 9.33335 7.99984 9.33335Z" fill="#382CDD"></path>
+                  <path d="M3.33333 9.33335C4.06971 9.33335 4.66667 8.7364 4.66667 8.00002C4.66667 7.26364 4.06971 6.66669 3.33333 6.66669C2.59695 6.66669 2 7.26364 2 8.00002C2 8.7364 2.59695 9.33335 3.33333 9.33335Z" fill="#382CDD"></path>
+                  <path d="M12.6668 9.33335C13.4032 9.33335 14.0002 8.7364 14.0002 8.00002C14.0002 7.26364 13.4032 6.66669 12.6668 6.66669C11.9304 6.66669 11.3335 7.26364 11.3335 8.00002C11.3335 8.7364 11.9304 9.33335 12.6668 9.33335Z" fill="#382CDD"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="content mb-1 is-flex is-justify-content-space-between is-align-items-center">
+              <h4 class="mb-0" style="font-size: 12px;" data-config-id="label1-1">Total Memeber</h4>
+              <span class="tag is-success is-light" data-config-id="val1-1"> <%= team.users.count %> </span>
+            </div>
+            <div class="content mb-1 is-flex is-justify-content-space-between is-align-items-center">
+              <h4 class="mb-0" style="font-size: 12px;" data-config-id="label1-2">Final Date</h4>
+              <span class="tag is-danger is-light" data-config-id="val1-2">14 March 2021</span>
+            </div>
+            <div class="content mb-0 is-flex is-justify-content-space-between is-align-items-center">
+              <h4 class="mb-0" style="font-size: 12px;" data-config-id="label1-3">Last Change</h4>
+              <span class="has-text-primary" style="font-size: 12px;" data-config-id="val1-3">6 days ago</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-item" style="width: 100%;">
+              <div class="is-flex is-justify-content-space-between is-align-items-center" style="width: 100%;">
+                <div class="is-flex is-align-items-center">
+                  <img class="image is-32x32 is-cover" style="border-radius: 50% !important;" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;crop=faces&amp;fit=crop&amp;h=128&amp;w=128" alt="alt" data-config-id="image1-1">
+                  <img class="image is-32x32 is-cover" style="margin-left: -8px; border-radius: 50% !important;" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" alt="alt" data-config-id="image1-2">
+                  <img class="image is-32x32 is-cover" style="margin-left: -8px; border-radius: 50% !important;" src="https://images.unsplash.com/photo-1528936466093-76ffdfcf7a40?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60" alt="alt" data-config-id="image1-3">
+                  <img class="image is-32x32 is-cover" style="margin-left: -8px; border-radius: 50% !important;" src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1055&amp;q=80" alt="alt" data-config-id="image1-4">
+                  <div class="is-relative is-inline-flex is-justify-content-center is-align-items-center has-background-primary-light" style="margin-left: -8px; width:32px; height: 32px; font-size: 12px; border-radius: 50% !important;">+3</div>
+                </div>
+                <%= link_to 'Show', team, class: "button is-primary ml-auto" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+    <% end %>
+
+  </div>
+</div>
 <br>
+
+<%#= team.name %>
+<!--<td><%#= team.description %></td>-->
+<!--<td><%#= link_to 'Show', team %></td>-->
+<!--<td><%#= link_to 'Edit', edit_team_path(team) %></td>-->
+<!--<td><%#= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+
 
 <%= link_to 'New Team', new_team_path %>

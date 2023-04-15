@@ -1,33 +1,51 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Tasks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>Project</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.description %></td>
-        <td><%= task.status %></td>
-        <td><%= task.project_id %></td>
-        <td><%= link_to 'Show', project_task_path(@project,task) %></td>
-        <td><%= link_to 'Edit', edit_project_task_path(@project,task) %></td>
-        <td><%= link_to 'Destroy', project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
 
-<%= link_to 'New Task', new_project_task_path(@project) %>
+<div class="card" style="margin-top: 3rem;">
+  <div class="columns is-multiline" style="justify-content: center; align-items: center;">
+    <%= button_to("New Task", new_project_task_path(@project), class: "button", method: :get, style: "width: 15rem; background-color: #8080ff") %>
+  </div>
+  <div class="table-responsive text-nowrap" style="height: 25rem; justify-content: center;">
+    <table class="table" style="text-align: left;">
+      <thead class="table-light">
+      <tr>
+        <th>Task Name</th>
+        <th>Description</th>
+        <th>Project</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+      <% @tasks.each do |task| %>
+        <tr style="justify-content: center;" >
+          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong> <%= task.title %> </strong></td>
+          <td>Description</td>
+          <td> <%= task.project.title %> </td>
+          <td><span class="badge bg-label-primary me-1"> <%= task.status %> </span></td>
+          <td>
+            <div class="dropdown">
+              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                <i class="bx bx-dots-vertical-rounded"></i>
+              </button>
+              <div class="dropdown-menu">
+                <%= link_to project_task_path(@project,task), class: "dropdown-item" do %>
+                  <i class="bx bx-edit-alt me-1"></i> <span>Show</span>
+                <% end %>
+
+                <%= link_to edit_project_task_path(@project,task), class: "dropdown-item" do %>
+                  <i class="bx bx-edit-alt me-1"></i> <span>Edit</span>
+                <% end %>
+
+                <%= link_to project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" do %>
+                  <i class="bx bx-trash me-1"></i> <span>Delete</span>
+                <% end %>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

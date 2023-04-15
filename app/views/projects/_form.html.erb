@@ -1,27 +1,65 @@
-<%= form_with(model: project) do |form| %>
-  <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<script>
+    $(document).ready(function(){
+        const parent = document.querySelector("#form")
+        const notification = document.querySelector(".notify")
+        if(parent.contains(notification)){
+            if(notification.contains(document.querySelector(".team-name")) && notification.contains(document.querySelector(".team-description"))){
+                $('.name-message').append("<p class='notification is-danger'>Title can't be blank</p>")
+                $('.description-message').append("<p class='notification is-danger'>Description can't be blank</p>")
+            }
+            else if(notification.contains(document.querySelector(".team-description"))){
+                console.log("Description can't be blank")
+                $('.description-message').append("<p class='notification is-danger'>Description can't be blank</p>")
+            }
+            else{
+                console.log("Name and Description are blank")
+                $('.name-message').append("<p class='notification is-danger'>Title can't be blank</p>")
+                $('.description-message').append("<p class='notification is-danger'>Description can't be blank</p>")
+            }
+        }
+    })
+</script>
 
-      <ul>
-        <% project.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div id="form">
+  <%= form_with(model: project) do |form| %>
+    <% if project.errors.any? %>
+      <div class="notify" style="text-align: center;">
+<!--        <h2><%#= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>-->
+        <ul>
+          <% project.errors.each do |error| %>
+              <% if error.full_message == "Title can't be blank" %>
+                <div class="team-name"></div>
+              <% elsif error.full_message == "Title can't be blank Description can't be blank" %>
+                <div class="full-message"></div>
+              <% else %>
+                <div class="team-description"></div>
+              <% end %>
+          <% end %>
+        </ul>
+      </div>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <label class="label">Project Name</label>
+      <span class="name-message"></span>
+      <%= form.text_field :title, class: "input" %>
+    </div>
+
+    <div class="field">
+      <label class="label">Description</label>
+      <span class="description-message"></span>
+      <%= form.rich_text_area :description, class: "" %>
+    </div>
+
+    <div class="actions columns">
+      <div class="column">
+        <%= form.submit :submit, class: "button is-link" %>
+      </div>
+      <div class="column">
+        <%= link_to 'Back', root_path, class: "button is-light redirect-link" %>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -1,4 +1,4 @@
-<div class="container content" style="width: 50%; margin-top: 10%">
+<div class="container content" style="margin-top: 10%; height: 30rem;">
   <div class="container" style="width: 50%;">
     <h3 style="text-align: center">Log In</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -30,6 +30,9 @@
           <div>
             <%= f.submit "Log in", class: "button is-primary is-rounded", style: "margin-left: 40%" %>
           </div>
+        </div>
+        <div class="level-item has-text-centered">
+
         </div>
         <div class="level-item has-text-centered">
           <div>

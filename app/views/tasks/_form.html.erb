@@ -1,37 +1,45 @@
-<%= form_with(model:[@project,task]) do |form| %>
-  <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<div class="container">
+  <%= form_with(model:[@project,task]) do |form| %>
+    <% if task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-      <ul>
-        <% task.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% task.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title, class: "label" %>
+      <%= form.text_field :title, type: "input", class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description, class: "label" %>
+      <%= form.text_area :description, class: "textarea" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :status, class: "label" %>
+      <%= form.text_area :status, class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= form.text_field :project_id, type: "input" %>
+    </div>
+
+    <div class="actions columns">
+      <div class="column">
+        <%= form.submit :submit, class: "button is-link" %>
+      </div>
+
+      <div class="column">
+        <%= link_to('Back', root_path, class: "button is-light redirect-link") %>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_area :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :project_id %>
-    <%= form.text_field :project_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
