@@ -71,27 +71,20 @@
     </style>
 
 <!--    style end-->
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-130795909-1');
-    </script>
-
-<!--    End of Bulma CSS Template-->
-
   </head>
 
   <body>
 
   <%= render('layouts/partials/home_nav') %>
+  <div id="notification">
     <% if notice %>
-      <p class="notice notification is-primary"><%= notice %></p>
+      <p class="notice notification is-primary" id="notify-alert"><%= notice %></p>
     <% end %>
     <% if alert %>
-      <p class="alert notification is-danger"><%= alert %></p>
+      <p class="alert notification is-danger" id="notify-alert"><%= alert %></p>
     <% end %>
+  </div>
+
     <%= yield %>
 
   <%#= render('layouts/partials/tables') %>
@@ -99,15 +92,23 @@
 
 <!--  scripts-->
 
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-130795909-1');
+
+      if($("#notification").children().length > 0) {
+          $(".notification").fadeOut(5000);
+      }
+  </script>
+
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
     <script src="../assets/vendor/libs/popper/popper.js"></script>
     <script src="../assets/vendor/js/bootstrap.js"></script>
     <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
     <script src="../assets/vendor/js/menu.js"></script>
-
-
-
     <!--  scripts-->
   </body>
 

@@ -24,11 +24,11 @@
 
     <div class="field">
       <%= form.label :status, class: "label" %>
-      <%= form.text_area :status, class: "input" %>
+      <%= form.select :status, ['In Progress', 'Completed', 'Bug Fix'], class: "select is-rounded" %>
     </div>
 
     <div class="field">
-      <%= form.text_field :project_id, type: "input" %>
+      <%= form.text_field :project_id, type: "input", type: "hidden" %>
     </div>
 
     <div class="actions columns">

@@ -2,7 +2,7 @@
 
 <div class="container is-fluid" style="margin-top: 3rem;">
   <div class="columns is-multiline" style="justify-content: center; align-items: center;">
-    <%= button_to("Create Team", new_team_path, class: "button", method: :get, style: "width: 15rem; background-color: #8080ff") %>
+    <%= button_to("Create Team", new_team_path, class: "button", method: :get, style: "width: 15rem; background-color: #79d2a0") %>
   </div>
 
   <div class="columns is-multiline">
@@ -12,7 +12,6 @@
         <div class="card p-3" style="height: 30rem;">
           <div class="card-image mb-4 is-relative">
             <img class="image is-fullwidth is-rounded is-cover" style="height: 155px;" src="https://images.unsplash.com/photo-1506792006437-256b665541e2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=334&amp;q=80" alt="alt" data-config-id="image1">
-            <span class="tag is-primary mt-2 mr-2 px-2" style="position: absolute; top: 0; right: 0; font-size: 12px;" data-config-id="label1">14 Tasks</span>
           </div>
           <div class="card-content">
             <div class="content is-flex is-justify-content-space-between is-align-items-center">
@@ -33,12 +32,12 @@
               <span class="tag is-success is-light" data-config-id="val1-1"> <%= team.users.count %> </span>
             </div>
             <div class="content mb-1 is-flex is-justify-content-space-between is-align-items-center">
-              <h4 class="mb-0" style="font-size: 12px;" data-config-id="label1-2">Final Date</h4>
-              <span class="tag is-danger is-light" data-config-id="val1-2">14 March 2021</span>
+              <h4 class="mb-0" style="font-size: 12px;" data-config-id="label1-2">Start Date</h4>
+              <span class="tag is-danger is-light" data-config-id="val1-2"> <%= team.created_at.strftime("%d-%m-%Y") %> </span>
             </div>
             <div class="content mb-0 is-flex is-justify-content-space-between is-align-items-center">
-              <h4 class="mb-0" style="font-size: 12px;" data-config-id="label1-3">Last Change</h4>
-              <span class="has-text-primary" style="font-size: 12px;" data-config-id="val1-3">6 days ago</span>
+              <h4 class="mb-0" style="font-size: 12px;" data-config-id="label1-3"> Last Change </h4>
+              <span class="has-text-primary" style="font-size: 12px;" data-config-id="val1-3"> <%= team.updated_at.strftime("%d-%m-%Y") %> </span>
             </div>
           </div>
           <div class="card-footer">
@@ -69,6 +68,3 @@
 <!--<td><%#= link_to 'Show', team %></td>-->
 <!--<td><%#= link_to 'Edit', edit_team_path(team) %></td>-->
 <!--<td><%#= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-
-
-<%= link_to 'New Team', new_team_path %>

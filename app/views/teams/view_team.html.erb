@@ -1,4 +1,67 @@
-<h1>Team Members</h1>
-<% @team_members.each do |team_member| %>
-  <p> <%= team_member.email %> </p>
-<% end %>
+<div class="container" style="margin-top: 2rem">
+
+  <div class="columns is-multiline">
+    <% @team_members.each do |team_member| %>
+
+    <div class="column is-5-desktop" data-path="0.0.0.0">
+      <div class="card" data-path="0.0.0.0.0">
+        <div class="card-image is-relative" data-path="0.0.0.0.0.0">
+<!--          <figure class="image is-3by1" data-path="0.0.0.0.0.0.0">-->
+<!--            <img class="is-cover" src="https://images.unsplash.com/photo-1592580119984-d31e3833fa78?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" data-config-id="bg-img1" data-path="0.0.0.0.0.0.0.0">-->
+<!--          </figure>-->
+          <button class="button is-ghost has-text-white mt-4 mr-4" style="position: absolute; top: 0; right: 0;" data-path="0.0.0.0.0.0.1">
+            <svg viewBox="0 0 12 4" fill="none" xmlns="http://www.w3.org/2000/svg" data-config-id="auto-svg-1-8" style="width: 12px;height: 12px" data-path="0.0.0.0.0.0.1.0">
+              <path d="M6 0.666504C5.26667 0.666504 4.66667 1.2665 4.66667 1.99984C4.66667 2.73317 5.26667 3.33317 6 3.33317C6.73333 3.33317 7.33333 2.73317 7.33333 1.99984C7.33333 1.2665 6.73333 0.666504 6 0.666504ZM1.33333 0.666504C0.6 0.666504 0 1.2665 0 1.99984C0 2.73317 0.6 3.33317 1.33333 3.33317C2.06667 3.33317 2.66667 2.73317 2.66667 1.99984C2.66667 1.2665 2.06667 0.666504 1.33333 0.666504ZM10.6667 0.666504C9.93333 0.666504 9.33333 1.2665 9.33333 1.99984C9.33333 2.73317 9.93333 3.33317 10.6667 3.33317C11.4 3.33317 12 2.73317 12 1.99984C12 1.2665 11.4 0.666504 10.6667 0.666504Z" fill="currentColor" data-path="0.0.0.0.0.0.1.0.0"></path>
+            </svg>
+          </button>
+          <img class="image is-64x64 is-absolute is-bottom-0" style="left: 50%; transform: translate(-50%, 50%); border-radius: 100% !important;" src="https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="alt" data-config-id="profile1" data-path="0.0.0.0.0.0.2">
+        </div>
+        <div class="card-content mt-4" data-path="0.0.0.0.0.1">
+          <div class="content has-text-centered" data-path="0.0.0.0.0.1.0">
+            <h3 class="title is-size-5" data-config-id="name1" data-path="0.0.0.0.0.1.0.0">Jane Thomas</h3>
+            <p class="subtitle is-size-6" data-config-id="job1" data-path="0.0.0.0.0.1.0.1">Designer &amp; Front-End Developer</p>
+          </div>
+          <div class="content" data-path="0.0.0.0.0.1.1">
+            <div class="is-flex is-justify-content-center is-align-items-center" data-path="0.0.0.0.0.1.1.0">
+              <svg class="mr-2" width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg" data-config-id="auto-svg-2-8" data-path="0.0.0.0.0.1.1.0.0">
+                <path d="M14.8332 0.333496H3.16656C2.50352 0.333496 1.86764 0.596888 1.3988 1.06573C0.929957 1.53457 0.666565 2.17045 0.666565 2.8335V11.1668C0.666565 11.8299 0.929957 12.4658 1.3988 12.9346C1.86764 13.4034 2.50352 13.6668 3.16656 13.6668H14.8332C15.4963 13.6668 16.1322 13.4034 16.601 12.9346C17.0698 12.4658 17.3332 11.8299 17.3332 11.1668V2.8335C17.3332 2.17045 17.0698 1.53457 16.601 1.06573C16.1322 0.596888 15.4963 0.333496 14.8332 0.333496ZM3.16656 2.00016H14.8332C15.0542 2.00016 15.2662 2.08796 15.4225 2.24424C15.5788 2.40052 15.6666 2.61248 15.6666 2.8335L8.9999 6.90016L2.33323 2.8335C2.33323 2.61248 2.42103 2.40052 2.57731 2.24424C2.73359 2.08796 2.94555 2.00016 3.16656 2.00016ZM15.6666 11.1668C15.6666 11.3878 15.5788 11.5998 15.4225 11.7561C15.2662 11.9124 15.0542 12.0002 14.8332 12.0002H3.16656C2.94555 12.0002 2.73359 11.9124 2.57731 11.7561C2.42103 11.5998 2.33323 11.3878 2.33323 11.1668V4.7335L8.56657 8.54183C8.69325 8.61497 8.83695 8.65347 8.98323 8.65347C9.12951 8.65347 9.27322 8.61497 9.3999 8.54183L15.6666 4.7335V11.1668Z" fill="#382CDD" data-path="0.0.0.0.0.1.1.0.0.0"></path>
+              </svg>
+              <p class="is-size-6" data-config-id="email1" data-path="0.0.0.0.0.1.1.0.1"> <%= team_member.email %> </p>
+            </div>
+          </div>
+          <div class="content has-text-centered" data-path="0.0.0.0.0.1.2">
+            <a class="button p-1 is-primary is-light mr-4 is-inline-flex is-justify-content-center is-align-items-center is-rounded" style="width: 40px; height: 40px; border-radius: 50% !important;" href="#" data-path="0.0.0.0.0.1.2.0">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" data-config-id="auto-svg-3-8" data-path="0.0.0.0.0.1.2.0.0">
+                <path d="M18 2.75V15.25C18 16.765 16.765 18 15.25 18H12.5V11H14.31C14.565 11 14.78 10.81 14.81 10.56L14.995 9.06C15.015 8.92 14.97 8.775 14.875 8.67C14.78 8.56 14.645 8.5 14.5 8.5H12.5V6.75C12.5 6.2 12.95 5.75 13.5 5.75H14.5C14.775 5.75 15 5.525 15 5.25V3.56C15 3.305 14.8 3.09 14.545 3.065C14.515 3.06 13.81 3 12.915 3C10.715 3 9.5 4.31 9.5 6.685V8.5H7.5C7.225 8.5 7 8.725 7 9V10.5C7 10.775 7.225 11 7.5 11H9.5V18H2.75C1.235 18 0 16.765 0 15.25V2.75C0 1.235 1.235 0 2.75 0H15.25C16.765 0 18 1.235 18 2.75Z" fill="#3B5998" data-path="0.0.0.0.0.1.2.0.0.0"></path>
+              </svg>
+            </a>
+            <a class="button p-1 is-primary is-light mr-4 is-inline-flex is-justify-content-center is-align-items-center is-rounded" style="width: 40px; height: 40px; border-radius: 50% !important;" href="#" data-path="0.0.0.0.0.1.2.1">
+              <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg" data-config-id="auto-svg-4-8" data-path="0.0.0.0.0.1.2.1.0">
+                <path d="M13.9063 1.435C13.808 1.33333 13.6567 1.30433 13.5277 1.36367L13.473 1.38867C13.4267 1.41 13.3803 1.43133 13.3337 1.45233C13.4693 1.236 13.577 1.00467 13.6513 0.765333C13.6927 0.633333 13.6477 0.489 13.5383 0.403667C13.429 0.318333 13.2783 0.309333 13.16 0.381667C12.7797 0.612667 12.4143 0.779 12.0367 0.895C11.4667 0.342 10.6903 0 9.83334 0C8.08434 0 6.66667 1.41767 6.66667 3.16667C6.66667 3.16833 6.66667 3.23433 6.66667 3.33333L6.33367 3.30667C3.09267 2.92333 2.17 0.743333 2.13167 0.649333C2.06967 0.492667 1.933 0.378333 1.768 0.344C1.60334 0.309 1.43234 0.360667 1.313 0.479667C1.247 0.546 0.666671 1.16 0.666671 2.33333C0.666671 3.16933 1.03934 3.84733 1.52167 4.37467C1.297 4.23767 1.166 4.12667 1.16267 4.12367C1.009 3.98967 0.789004 3.96167 0.606337 4.05433C0.424337 4.14733 0.317004 4.34167 0.335337 4.54533C0.341671 4.61567 0.483671 5.94967 2.02467 6.957L1.74367 7.008C1.57334 7.039 1.431 7.156 1.36767 7.31733C1.30467 7.479 1.32934 7.66133 1.43334 7.8C1.46834 7.847 2.11934 8.69333 3.533 9.18C2.778 9.43167 1.74067 9.66667 0.500004 9.66667C0.304004 9.66667 0.125671 9.78133 0.0446708 9.96C-0.0366625 10.1387 -0.00566249 10.3483 0.123671 10.4957C0.177337 10.5573 1.47834 12 4.83334 12C10.4043 12 13 6.82833 13 3.33333V3.16667C13 3.11733 12.9947 3.069 12.9927 3.02033C13.69 2.34633 13.9523 1.84067 13.965 1.81567C14.028 1.689 14.0047 1.53633 13.9063 1.435Z" fill="#00ACEE" data-path="0.0.0.0.0.1.2.1.0.0"></path>
+              </svg>
+            </a>
+            <a class="button p-1 is-primary is-light is-inline-flex is-justify-content-center is-align-items-center is-rounded" style="width: 40px; height: 40px; border-radius: 50% !important;" href="#" data-path="0.0.0.0.0.1.2.2">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-config-id="auto-svg-5-8" data-path="0.0.0.0.0.1.2.2.0">
+                <g clip-path="url(#clip0)" data-path="0.0.0.0.0.1.2.2.0.0">
+                  <path d="M15.996 16V15.9993H16V10.1313C16 7.26065 15.382 5.04932 12.026 5.04932C10.4126 5.04932 9.32998 5.93465 8.88797 6.77398H8.84131V5.31732H5.6593V15.9993H8.97264V10.71C8.97264 9.31732 9.23664 7.97065 10.9613 7.97065C12.6606 7.97065 12.686 9.55998 12.686 10.7993V16H15.996Z" fill="#0E76A8" data-path="0.0.0.0.0.1.2.2.0.0.0"></path>
+                  <path d="M0.264038 5.31787H3.58137V15.9999H0.264038V5.31787Z" fill="#0E76A8" data-path="0.0.0.0.0.1.2.2.0.0.1"></path>
+                  <path d="M1.92133 0C0.860667 0 0 0.860667 0 1.92133C0 2.982 0.860667 3.86067 1.92133 3.86067C2.982 3.86067 3.84267 2.982 3.84267 1.92133C3.842 0.860667 2.98133 0 1.92133 0V0Z" fill="#0E76A8" data-path="0.0.0.0.0.1.2.2.0.0.2"></path>
+                </g>
+              </svg>
+            </a>
+          </div>
+          <div data-path="0.0.0.0.0.1.3"><a class="button mb-1 mr-2" href="#" data-config-id="tag1-1" data-path="0.0.0.0.0.1.3.0">Front-End</a><a class="button mb-1 mr-2" href="#" data-config-id="tag1-2" data-path="0.0.0.0.0.1.3.1">Design</a><a class="button mb-1" href="#" data-config-id="tag1-3" data-path="0.0.0.0.0.1.3.2">Product Development</a></div>
+        </div>
+        <div class="card-footer" data-path="0.0.0.0.0.2">
+          <div class="card-footer-item" data-path="0.0.0.0.0.2.0">
+            <button class="button has-text-grey-light is-uppercase" style="border: none;" data-config-id="primary-action1" data-path="0.0.0.0.0.2.0.0">View Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+  </div>
+
+
+</div>
