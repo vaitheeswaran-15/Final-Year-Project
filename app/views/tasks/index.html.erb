@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <br>
 <div class="container content" style="height: 35rem;">
   <div class="card" style="margin-top: 3rem;">
@@ -14,19 +14,23 @@
           <th>Project</th>
           <th>Status</th>
           <th>Actions</th>
+          <th>Delete</th>
         </tr>
         </thead>
         <tbody class="table-border-bottom-0">
         <% @tasks.each do |task| %>
+
           <tr style="justify-content: center;" >
             <td><strong> <%= task.title %> </strong></td>
             <td>Description</td>
             <td> <%= task.project.title %> </td>
             <td>
-              <% if task.status.downcase == 'in progress' %>
+              <% if task.status.downcase == 'in progesss' %>
                 <span class="badge bg-label-primary me-1"> <%= task.status %> </span>
               <% elsif task.status.downcase == 'completed' %>
                 <span class="badge bg-label-success me-1"> <%= task.status %> </span>
+              <% elsif task.status.downcase == 'yet to start' %>
+                <span class="badge bg-label-warning me-1"> <%= task.status %> </span>
               <% else %>
                 <span class="badge bg-label-danger me-1"> <%= task.status %> </span>
               <% end %>
@@ -45,16 +49,20 @@
                     <i class="bx bx-edit-alt me-1"></i> <span>Edit</span>
                   <% end %>
 
-                  <%= link_to project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" do %>
-                    <i class="bx bx-trash me-1"></i> <span>Delete</span>
-                  <% end %>
-                </div>
+                <%= link_to project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" do %>
+                  <i class="bx bx-trash me-1"></i> <span>Delete</span>
+                <% end %>
               </div>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
+            </div>
+          </td>
+          <td>
+            <%= link_to "Delete",project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' }%>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
+
+<%= link_to "Analytics", analytics_path(@project),class:"btn" %>

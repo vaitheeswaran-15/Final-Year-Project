@@ -14,24 +14,25 @@
 <!--            </div>-->
             <div class="card-content p-0 is-flex is-flex-direction-column">
               <div class="content p-5 has-text-grey-light">
-                <h3><%= @project.title %></h3>
+                <h3><%= link_to @project.title, edit_project_path(@project) %></h3>
                 <p class="is-size-6 has-text-weight-normal"> <%= @project.description %> </p>
               </div>
               <div class="content p-5 has-background-info-light">
                 <div class="columns">
                   <div class="column">
                     <div class="is-size-6">
-                      <span class="has-text-weight-semibold">Edit</span> from <Istanbul></Istanbul>
+                      <span class="has-text-weight-semibold">Since: </span><%= @project.created_at.strftime("%d-%m-%Y") %>
                     </div>
                     <div class="is-size-6">
-                      <span class="has-text-primary-dark">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 10 Reviews
+                      <span class="has-text-primary-dark">Tasks count: </span> <%=@project.tasks.count %>
                     </div>
+
                   </div>
                   <div class="column">
                     <%= link_to 'Show Tasks', project_tasks_path(@project), class: "button is-primary is-medium is-fullwidth has-text-weight-semibold" %>
                   </div>
                 </div>
-                <p class="is-size-7">*Places to visit: Istanbul, Kireçburnu & Ankara</p>
+                <p class="is-size-7"></p>
               </div>
             </div>
           </div>
@@ -40,7 +41,3 @@
     </div>
   </section>
 </div>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
- |
-<%= link_to 'Back', projects_path %>

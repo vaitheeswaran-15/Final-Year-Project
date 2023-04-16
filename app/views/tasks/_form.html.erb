@@ -24,7 +24,10 @@
 
     <div class="field">
       <%= form.label :status, class: "label" %>
-      <%= form.select :status, ['In Progress', 'Completed', 'Bug Fix'], class: "select is-rounded" %>
+      <%= form.radio_button :status,"IN PROGRESS" %> In-Progesss <br/>
+      <%= form.radio_button :status,"YET TO START" %> Yet to Start <br/>
+      <%= form.radio_button :status,"COMPLETED" %> Completed <br/>
+
     </div>
 
     <div class="field">
