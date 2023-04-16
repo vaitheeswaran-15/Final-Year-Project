@@ -20,13 +20,17 @@ class TasksController < ApplicationController
   def edit
   end
 
+  def analytics
+
+  end
+
   # POST /tasks or /tasks.json
   def create
     @task = @project.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to project_tasks_path(@task), notice: "Task was successfully created." }
+        format.html { redirect_to projects_path(@project), notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,7 +57,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
+      format.html { redirect_to project_tasks_path(@project), notice: "Task was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,28 @@
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+    var xValues = ["In-Progress", "Yet to Start", "Completed"];
+    var yValues = [<%= @in_progress.count %>,<%= @yet_to_start.count %>,<%= @completed.count %>];
+    var barColors = [
+        "#b91d47",
+        "#00aba9",
+        "#2b5797",
+    ];
+
+    new Chart("myChart", {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Task Progress"
+            }
+        }
+    });
+</script>

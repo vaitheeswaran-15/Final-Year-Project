@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <br>
 
 <div class="card" style="margin-top: 3rem;">
@@ -14,6 +14,7 @@
         <th>Project</th>
         <th>Status</th>
         <th>Actions</th>
+        <th>Delete</th>
       </tr>
       </thead>
       <tbody class="table-border-bottom-0">
@@ -43,9 +44,14 @@
               </div>
             </div>
           </td>
+          <td>
+            <%= link_to "Delete",project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' }%>
+          </td>
         </tr>
       <% end %>
       </tbody>
     </table>
   </div>
 </div>
+
+<%= link_to "Analytics", analytics_path(@project),class:"btn" %>
