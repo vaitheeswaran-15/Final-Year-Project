@@ -14,15 +14,20 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = @project.tasks.build
+    @teams = Team.all
+    @users = []
+    @teams.each do |team|
+      team.users.each do |team_user|
+        @users << team_user.email+"("+team.name+")"
+      end
+    end
   end
 
   # GET /tasks/1/edit
   def edit
   end
 
-  def analytics
 
-  end
 
   # POST /tasks or /tasks.json
   def create
@@ -43,7 +48,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to project_tasks_path(@task), notice: "Task was successfully updated." }
+        format.html { redirect_to project_tasks_path(@project), notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -74,6 +79,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description, :status, :project_id)
+      params.require(:task).permit(:title, :description,:Estimation, :status, :assigned_user, :project_id)
     end
 end
