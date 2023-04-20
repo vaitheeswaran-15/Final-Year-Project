@@ -1,4 +1,6 @@
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 <canvas id="pieChart" style="width:100%;max-width:600px"></canvas>
+
 
 <script>
     const xValues = ["In-Progress", "Yet to Start", "Completed"];
@@ -22,6 +24,36 @@
             title: {
                 display: true,
                 text: "Task Progress"
+            }
+        }
+    });
+
+    const xValuess = ["1hrs","2hrs","3hrs","4hrs","5hrs"];
+    const yValuess = [<%= @task_with_one_hours.count %>,<%= @task_with_two_hours.count %>,<%= @task_with_three_hours.count %>,<%= @task_with_four_hours.count %>,<%= @task_with_five_hours.count %>];
+
+    console.log("Hello")
+    console.log(yValuess)
+
+    new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: xValuess,
+            datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: yValuess
+            }]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+                yAxes: [{ticks: {min: 0, max: 20}}],
+            },
+            title: {
+                display: true,
+                text: "Task Estimation (in hours)"
             }
         }
     });

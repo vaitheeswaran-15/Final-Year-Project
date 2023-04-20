@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = @project.tasks.build
-    @teams = Team.all
+    @teams = Team.includes(:users).all
     @users = []
     @teams.each do |team|
       team.users.each do |team_user|
