@@ -25,6 +25,13 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    @teams = Team.includes(:users).all
+    @users = []
+    @teams.each do |team|
+      team.users.each do |team_user|
+        @users << team_user.email+"("+team.name+")"
+      end
+    end
   end
 
 
