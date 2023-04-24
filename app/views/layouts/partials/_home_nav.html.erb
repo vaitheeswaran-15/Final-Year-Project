@@ -9,9 +9,7 @@
     <%= link_to "Teams",teams_path,class:" partials-item", style: "font-size:18px", class: "navbar-item" %>
     <%= link_to "Projects",projects_path,class:" partials-item", style: "font-size:18px", class: "navbar-item" %>
     <div class="navbar-end">
-      <a class="navbar-item">
-        Blog
-      </a>
+      <%= link_to "Blog",topics_path,class:" partials-item", style: "font-size:18px", class: "navbar-item" %>
 
       <div class="navbar-item">
         <% if user_signed_in? %>

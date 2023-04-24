@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :topics do
+    resources :posts
+  end
   resources :projects do
     resources :tasks
   end
