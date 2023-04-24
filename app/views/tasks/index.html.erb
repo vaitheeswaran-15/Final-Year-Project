@@ -36,23 +36,28 @@
               <% end %>
             </td>
             <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <%= link_to project_task_path(@project,task), class: "dropdown-item" do %>
-                    <i class="bx bx-edit-alt me-1"></i> <span>Show</span>
-                  <% end %>
+              <div class="dropdown is-small ">
+                <div class="dropdown is-hoverable">
+                  <div class="dropdown-trigger">
+                    <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu4">
+                      <span class="icon is-small"> <i class="fas fa-angle-down" aria-hidden="true"></i> </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu is-small" id="dropdown-menu4" role="menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-item">
+                        <%= link_to project_task_path(@project,task), class: "dropdown-item" do %>
+                          <i class="bx bx-edit-alt me-1"></i> <span>Show</span>
+                        <% end %>
 
-                  <%= link_to edit_project_task_path(@project,task), class: "dropdown-item" do %>
-                    <i class="bx bx-edit-alt me-1"></i> <span>Edit</span>
-                  <% end %>
+                        <%= link_to edit_project_task_path(@project,task), class: "dropdown-item" do %>
+                          <i class="bx bx-edit-alt me-1"></i> <span>Edit</span>
+                        <% end %>
 
-                <%= link_to project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" do %>
-                  <i class="bx bx-trash me-1"></i> <span>Delete</span>
-                <% end %>
-              </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
           </td>
           <td>

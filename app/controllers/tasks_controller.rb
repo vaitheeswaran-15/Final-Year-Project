@@ -39,7 +39,6 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = @project.tasks.build(task_params)
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to project_path(@project), notice: "Task was successfully created." }
@@ -88,4 +87,5 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:title, :description,:Estimation, :status, :assigned_user, :project_id)
     end
+
 end

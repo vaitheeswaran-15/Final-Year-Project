@@ -1,22 +1,16 @@
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+<div class="container is-max-desktop" style="margin-top: 2rem">
 
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
+  <article class="message is-info">
+    <div class="message-header">
+      <%= @task.title %> | <%= @task.project.title %>
+      <span>
+      <%= @task.status %>
+    </span>
+      <%= link_to('', project_tasks_path(@project), class: "delete") %>
+    </div>
+    <div class="message-body">
+      <%= @task.description %>
+    </div>
+  </article>
 
-<p>
-  <strong>Status:</strong>
-  <%= @task.status %>
-</p>
-
-<p>
-  <strong>Project:</strong>
-  <%= @task.project_id %>
-</p>
-
-<%= link_to 'Edit', edit_project_task_path(@project,@task) %> |
-<%= link_to 'Back', project_tasks_path(@project) %>
+</div>
