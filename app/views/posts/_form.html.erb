@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :topic_id %>
-    <%= form.text_field :topic_id %>
+    <%= form.text_field :topic_id, type:'hidden' %>
   </div>
 
   <div class="field">
@@ -23,7 +22,7 @@
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.rich_text_area :body %>
   </div>
 
   <div class="actions">
