@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_project
   before_action :set_task, only: %i[ show edit update destroy ]
+  after_action :notify_developers
 
   # GET /tasks or /tasks.json
   def index
@@ -85,7 +86,15 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description,:Estimation, :status, :assigned_user, :project_id)
+      params.require(:task).permit(:title, :description, :estimation, :status, :assigned_user, :project_id)
     end
 
+    def notify_developers
+      @project.tasks.all.each do |task|
+        user = task.assigned_user.split('(')[0]
+        if (task.updated_at + task.estimation.hour < Time.now.utc) and (current_user.email == user) and (task.status != 'COMPLETED')
+          Task.send_notification(task)
+        end
+      end
+    end
 end

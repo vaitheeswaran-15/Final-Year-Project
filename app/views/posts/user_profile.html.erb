@@ -8,70 +8,6 @@
           <p class="modal-card-title">Edit Preferences</p>
           <button class="delete"></button>
         </header>
-        <section class="modal-card-body">
-          <label class="label">Name</label>
-          <p class="control">
-            <input class="input" placeholder="Text input" type="text">/</input>
-          </p>
-          <label class="label">Username</label>
-          <p class="control has-icon has-icon-right">
-            <input class="input" placeholder="Text input" type="text" value="pmillerk">/</input>
-          </p>
-          <label class="label">Email</label>
-          <p class="control has-icon has-icon-right">
-            <input class="input" placeholder="Email input" type="text" value="hello@">/</input>
-            <i class="fa fa-warning"></i>
-            <span class="help is-danger">This email is invalid</span>
-          </p>
-          <div class="control">
-            <div class="control-label is-pulled-left">
-              <label class="label">Date of Birth</label>
-            </div>
-            <span>
-              <span class="select">
-                <select>
-                  <option>Month</option>
-                  <option>With options</option>
-                </select>
-              </span>
-              <span class="select">
-                <select>
-                  <option>Day</option>
-                  <option>With options</option>
-                </select>
-              </span>
-              <span class="select">
-                <select>
-                  <option>Year</option>
-                  <option>With options</option>
-                </select>
-              </span>
-            </span>
-          </div>
-          <label class="label">Description</label>
-          <p class="control">
-            <textarea class="textarea" placeholder="Describe Yourself!"></textarea>
-          </p>
-          <div class="content">
-            <h1>Optional Information</h1>
-          </div>
-          <label class="label">Phone Number</label>
-          <p class="control has-icon has-icon-right">
-            <input class="input" placeholder="Text input" type="text" value="+1 *** *** 0535"></input>
-          </p>
-          <label class="label">Work</label>
-          <p class="control has-icon has-icon-right">
-            <input class="input" placeholder="Text input" type="text" value="Greater Washington Publishing"></input>
-          </p>
-          <label class="label">School</label>
-          <p class="control has-icon has-icon-right">
-            <input class="input" placeholder="Text input" type="text" value="George Mason University"></input>
-          </p>
-        </section>
-        <footer class="modal-card-foot">
-          <a class="button is-primary modal-save">Save changes</a>
-          <a class="button modal-cancel">Cancel</a>
-        </footer>
         <% # Edit Preferences Modal End %>
       </div>
     </div>
@@ -79,7 +15,7 @@
       <div class="columns is-mobile is-multiline">
         <div class="column is-2">
           <span class="header-icon user-profile-image">
-            <img src="http://placehold.it/300x225"/>
+            <img src="http://placehold.it/300x225", style="border-radius: 1rem"/>
           </span>
         </div>
         <div class="column is-4-tablet is-10-mobile name">
@@ -98,11 +34,11 @@
             The users profile bio would go here, of course. It could be two lines or more or whatever. We should probably limit the amount of characters to ~500 at most though.
           </p>
         </div>
-        <div class="column is-2-tablet is-4-mobile has-text-centered">
+        <div class="column has-text-centered">
           <p class="stat-val"> <%= @posts_by_user.count %> </p>
           <p class="stat-key">Posts</p>
         </div>
-        <div class="column is-2-tablet is-4-mobile has-text-centered">
+        <div class="column">
           <p class="stat-val">10</p>
           <p class="stat-key">likes</p>
         </div>
@@ -113,21 +49,21 @@
 
       </div>
     </div>
-    <div class="box" style="border-radius: 0px;">
+    <div class="box" style="border-radius: 10px; width: 50rem; display: flex; justify-content: center; margin-left: 15rem">
       <!-- Main container
       -->
-      <h1 style="text-align: center">Posts by <%= @created_user.email %> </h1>
+      <h1 class="content is-medium" style="text-align: center;">Posts by <%= @created_user.email %> </h1>
     </div>
-    <div class="columns is-fluid">
+    <div class="container is-fluid">
       <div class="columns is-multiline">
       <% count = 1 %>
       <% @posts_by_user.each do |post| %>
         <div class="column is-one-quater">
-          <div class="card">
+            <div class="card" style="width: 20rem">
               <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="http://placehold.it/300x225"/>
-                </figure>
+<!--                <figure class="image is-4by3">-->
+<!--                  <img src="http://placehold.it/300x225"/>-->
+<!--                </figure>-->
               </div>
               <div class="card-content">
                 <div class="content">
@@ -136,6 +72,9 @@
                   </span> |
                   <span class="tag subtitle">
                     <%= post.topic.name %>
+                  </span>
+                  <span class="tag subtitle">
+                    <%= post.updated_at.strftime("%D") %>
                   </span>
                   <p style="text-align: left;">
                     <%= truncate(post.body.to_plain_text, length: 220) %>

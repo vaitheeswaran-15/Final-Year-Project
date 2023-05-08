@@ -14,22 +14,22 @@
 
     <div class="field">
       <%= form.label :title, class: "label" %>
-      <%= form.text_field :title, type: "input", class: "input" %>
+      <%= form.text_field :title, type: "input", class: "input", required: true %>
     </div>
 
     <div class="field">
       <%= form.label :description, class: "label" %>
-      <%= form.text_area :description, class: "textarea" %>
+      <%= form.text_area :description, class: "textarea", required: true %>
     </div>
 
     <div class="field">
       <%= form.label :Estimation_in_Hours, class: "label" %>
-      <%= form.number_field :Estimation, type: "input", class: "input" %>
+      <%= form.number_field :estimation, type: "input", class: "input", required: true %>
     </div>
 
     <div class="field">
       <%= form.label :status, class: "label" %>
-      <%= form.radio_button :status,"IN PROGRESS" %> In-Progess <br/>
+      <%= form.radio_button :status,"IN PROGRESS" %> In Progess <br/>
       <%= form.radio_button :status,"YET TO START" %> Yet to Start <br/>
       <%= form.radio_button :status,"COMPLETED" %> Completed <br/>
 

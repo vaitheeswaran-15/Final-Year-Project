@@ -16,3 +16,25 @@
 #
 #   puts usr
 # end
+
+# ===== Project =====
+# (2).times do |p|
+#   pro = Project.new(title: "Project #{p}",
+#                     description: Faker::Lorem.characters(number: 100))
+#   pro.save!
+# end
+# puts "Projects created"
+#
+# # ===== Task =====
+# project = Project.first
+# user = User.first
+# (5).times do |t|
+#   task = Task.new(title: "Task #{t}",
+#                   description: Faker::Lorem.characters(number: 50),
+#                   status: 'YET TO START',
+#                   estimation: 1,
+#                   assigned_user: user.email,
+#                   project_id: project.id)
+#   task.save!
+# end
+# puts "Tasks created"
