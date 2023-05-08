@@ -1,27 +1,36 @@
-<%= form_with(model: topic) do |form| %>
-  <% if topic.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+<div class="container content" style="margin-top: 5%; height: 30rem;">
+  <div class="container" style="width: 50%;">
+    <%= form_with(model: topic) do |form| %>
+      <% if topic.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
 
-      <ul>
-        <% topic.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% topic.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'input is-normal', required: true %>
+      </div>
+
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_area :description, class: 'input', placeholder: 'Describe about topic', style: 'height: 5rem;', required: true %>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <%= form.submit 'Create Topic', class: 'button is-primary is-rounded' %>
+        </div>
+        <div class="column">
+          <%= link_to "Back", topics_path ,class: "button is-rounded redirect-link", style: "margin-left: 40%" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

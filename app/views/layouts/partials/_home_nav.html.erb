@@ -16,7 +16,7 @@
           <h3><span>Welcome <%= link_to(current_user.email, edit_user_registration_path, class: "redirect-link") %></span></h3>&nbsp; |&nbsp;
           <%= link_to("Log out", destroy_user_session_path, class: "button is-light is-small", method: :delete ) %>
         <% else %>
-          <%= button_to("Sign up", user_registration_path, class: "button is-primary") %>
+          <%= link_to("Sign up", new_user_registration_path, class: "button is-primary", class: 'button is-success') %>
           <%= button_to("Log in", user_session_path, class: "button is-light") %>
         <% end %>
       </div>
