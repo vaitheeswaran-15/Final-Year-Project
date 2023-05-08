@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,:confirmable
 
   # ===== Associations =====
+  has_many :posts
   has_and_belongs_to_many :teams
 end

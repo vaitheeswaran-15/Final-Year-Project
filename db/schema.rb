@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_24_160906) do
+ActiveRecord::Schema.define(version: 2023_05_08_042533) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 2023_04_24_160906) do
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
     t.index ["topic_id"], name: "index_posts_on_topic_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -118,6 +120,7 @@ ActiveRecord::Schema.define(version: 2023_04_24_160906) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "posts", "topics"
+  add_foreign_key "posts", "users"
   add_foreign_key "tasks", "projects"
   add_foreign_key "teams_users", "teams"
   add_foreign_key "teams_users", "users"

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_topic
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post,:set_user, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
   def index
@@ -68,8 +68,12 @@ class PostsController < ApplicationController
       @post = @topic.posts.find(params[:id])
     end
 
+    def set_user
+      @created_user = User.find(@post.user_id)
+    end
+
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:topic_id, :title, :body)
+      params.require(:post).permit(:topic_id, :user_id, :title, :body)
     end
 end
