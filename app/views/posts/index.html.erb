@@ -630,7 +630,7 @@
                     <h1><%= post.title %></h1>
                   </header>
                   <p class="BlogPostExcerpt-module--excerpt--705ef" data-cy="blog-excerpt">
-                    <%= truncate(post.body.to_plain_text, length: 100) %>
+                    <%= truncate(post.body.to_plain_text, length: 200) %>
                   </p>
                   <%= link_to topic_post_path(@topic, post) do %>
                     Read More

@@ -101,7 +101,7 @@
           <header>
             <div class="BlogPost-module--topHeader--6ced3">
               <% if current_user.id == @created_user.id %>
-                <h1> <%= link_to(@post.title, edit_topic_post_path(@topic, @post), class: 'redirect-link') %> </h1> `1
+                <h1> <%= link_to(@post.title, edit_topic_post_path(@topic, @post), class: 'redirect-link') %> </h1>
               <% else %>
                 <h1><%= @post.title %></h1>
               <% end %>
@@ -109,7 +109,7 @@
                 <div class="Metadata-module--metadataText--0984e">
                     <span class="Metadata-module--authorInfo--cac40">
                       <div>
-                        <%= @post.user.email %>
+                        <%= link_to(@created_user.email, topic_post_user_profile_path(@topic, @post)) %>
                       </div>
                       <time><%= @post.created_at.utc %></time>
                     </span>

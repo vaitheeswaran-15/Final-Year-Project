@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :topics do
-    resources :posts
+    resources :posts do
+      get 'user_profile'
+    end
   end
   resources :projects do
     resources :tasks

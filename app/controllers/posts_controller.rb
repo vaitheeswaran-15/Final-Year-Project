@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_topic
-  before_action :set_post,:set_user, only: %i[ show edit update destroy ]
+  before_action :set_post,:set_user, only: %i[ show edit update destroy user_profile]
 
   # GET /posts or /posts.json
   def index
@@ -58,6 +58,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def user_profile
+    @posts_by_user = @created_user.posts
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic
@@ -65,7 +69,11 @@ class PostsController < ApplicationController
     end
 
     def set_post
-      @post = @topic.posts.find(params[:id])
+      if params[:post_id].present?
+        @post = @topic.posts.find(params[:post_id])
+      else
+        @post = @topic.posts.find(params[:id])
+      end
     end
 
     def set_user
