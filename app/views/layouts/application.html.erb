@@ -55,13 +55,15 @@
             animation: exit 3s ease-in-out infinite;
         }
         .notification {
-            height: 26%;
+            height: 4rem;
             width: 50%;
             background-color: #C1F7EE;
             margin-left: 25%;
             transform-origin: right;
-            -webkit-animation: notify 3s ease-in-out infinite;
-            animation: notify 3s ease-in-out infinite;
+            /*-webkit-animation: notify 3s ease-in-out infinite;*/
+            /*animation: notify 3s ease-in-out infinite;*/
+            z-index: 1;
+            position: absolute;
         }
     </style>
 
@@ -71,7 +73,7 @@
   <body style="background-color: white">
 
   <%= render('layouts/partials/home_nav') %>
-  <div id="notification">
+  <div id="notification"">
     <% if notice %>
       <p class="notice notification is-primary" id="notify-alert"><%= notice %></p>
     <% end %>
@@ -80,7 +82,7 @@
     <% end %>
   </div>
 
-    <div style="height: 38rem; margin-top: 2rem;
+    <div style=" margin-top: 2rem;
       top: 0;
       width: 100%;">
       <%= yield %>
