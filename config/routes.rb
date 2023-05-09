@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   get "/view/:id", to:"teams#view_team", as:"view_team"
   delete "/exit/:id", to:"teams#team_exit", as:"exit_team"
   get "/analytics/:id", to:"home#analytics" ,as:"analytics"
+  get "/notify_users", to: "tasks#notify_developers", as:"notify_developers"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
