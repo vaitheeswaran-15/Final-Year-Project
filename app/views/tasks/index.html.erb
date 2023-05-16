@@ -76,7 +76,7 @@
 
   <script>
     $('.notify_developers').on('click', function(){
-        alert('Button Clicked')
+        console.log('Email Action Triggered')
         $.ajax({
             type: "GET",
             url: 'http://localhost:3000/notify_users',
