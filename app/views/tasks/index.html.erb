@@ -4,6 +4,7 @@
   <div class="card" style="margin-top: 3rem;">
     <div class="columns is-multiline" style="justify-content: center; align-items: center;">
       <%= button_to("New Task", new_project_task_path(@project), class: "button", method: :get, style: "width: 15rem; background-color: #8080ff") %>
+      <button class="button notify_developers" style="width: 15rem; background-color: orange">Notify</button>
     </div>
     <div class="table-responsive text-nowrap" style="height: 25rem; justify-content: center;">
       <table class="table" style="text-align: left;">
@@ -71,3 +72,21 @@
 </div>
 
 <%= link_to "Analytics", analytics_path(@project),class:"btn" %>
+
+
+  <script>
+    $('.notify_developers').on('click', function(){
+        console.log('Email Action Triggered')
+        $.ajax({
+            type: "GET",
+            url: 'http://localhost:3000/notify_users',
+            data: { project_id: <%= @project.id %>},
+            success: function(data){
+                alert('Email sent successfully');
+            },
+            error: function(data, err){
+                alert('Error occured');
+            }
+        })
+    })
+  </script>
